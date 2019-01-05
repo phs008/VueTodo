@@ -16,19 +16,17 @@ export default {
         }
     },
     methods : {
-        addTodo()
-        {
-            if(this.newTodoItem != "")
-            {
-                var value = this.newTodoItem && this.newTodoItem.trim();
-                localStorage.setItem(this.newTodoItem,this.newTodoItem);
-                this.clearInput();
-            }
-            
-        },
         clearInput()
         {
             this.newTodoItem = "";
+        },
+        addTodo(){
+            if(this.newTodoItem != "")
+            {
+                let value = this.newTodoItem && this.newTodoItem.trim();
+                this.$emit('addTodo',value);
+                this.clearInput();
+            }
         }
     }
 }
